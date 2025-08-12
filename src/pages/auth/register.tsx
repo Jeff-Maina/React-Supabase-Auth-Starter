@@ -1,11 +1,11 @@
 // src/pages/auth/signup.tsx
+import { useAuthActions } from "@/auth/actions";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff } from "lucide-react";
-import { type FunctionComponent, useState } from "react";
+import { useState, type FunctionComponent } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
-import { useAuthActions } from "@/auth/actions";
 
 import {
   Form,
@@ -52,12 +52,25 @@ const Signup: FunctionComponent = () => {
   const onSubmit = async (values: SignupFormData) => {
     setLoading(true);
     try {
-      await signUpWithPasswordAndEmail(values.email, values.password);
-      toast.success("Account created! Welcome aboard.");
-      navigate("/home", { replace: true });
+      const data = await signUpWithPasswordAndEmail(
+        values.email,
+        values.password
+      );
+
+
+      if (!data.session) {
+        toast.success(
+          `Account created! Please check your email (${values.email}) for a confirmation link.`
+        );
+        navigate("/login");
+      } else {
+        // Email confirmation is OFF — user is already signed in
+        toast.success("Account created! Redirecting to your profile...");
+        navigate("/profile");
+      }
     } catch (err) {
+      console.error(err);
       if (err instanceof Error) {
-        console.error(err);
         if (!navigator.onLine) {
           toast.error("No internet connection. Please check your network.");
         } else if (err.message.includes("already registered")) {
@@ -175,7 +188,10 @@ const Signup: FunctionComponent = () => {
             </SubmitButton>
 
             <small>
-              Already have an account? <Link to="login" className="link">Sign in</Link>
+              Already have an account?{" "}
+              <Link to="login" className="link">
+                Sign in
+              </Link>
             </small>
           </form>
         </Form>

@@ -56,6 +56,11 @@ It includes login, signup, password reset flows, protected routes, and toast not
   - Dynamic route redirection (e.g., go to `/reports` after login if originally blocked)
   - `NotFound` page for unknown routes
 
+- **Profile Management**
+
+  - Profile creation on registration.
+  - Updating profile.
+
 ---
 
 ## Getting Started
@@ -90,9 +95,9 @@ npm run build
 
 ## Future Improvements
 
-- Add OAuth providers (Google, GitHub, etc.)
-- Dark mode toggle
-- Multi-step signup with profile setup
+- [ ] Add OAuth providers (Google, GitHub, etc.)
+- [ ] Dark mode toggle
+- [x] Profile setup
 
 ## License
 

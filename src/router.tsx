@@ -1,13 +1,14 @@
-import { Navigate, createBrowserRouter } from "react-router-dom";
-import Login from "./pages/auth/login";
+import { createBrowserRouter } from "react-router-dom";
 import { ProtectedRoute } from "./auth/protected-route";
 import MainLayout from "./layouts/main-layout";
-import Home from "./pages/home";
-import Reports from "./pages/reports";
-import NotFound from "./pages/not-found";
 import ForgotPassword from "./pages/auth/forgot-password";
-import ResetPassword from "./pages/auth/reset-password";
+import Login from "./pages/auth/login";
+import Profile from "./pages/auth/profile";
 import Signup from "./pages/auth/register";
+import ResetPassword from "./pages/auth/reset-password";
+import Home from "./pages/home";
+import NotFound from "./pages/not-found";
+import Reports from "./pages/reports";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "reports",
         element: <Reports />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
       },
     ],
   },

@@ -10,6 +10,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { LogoutButton } from "./logout-button";
+import { UserRound } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface NavProfileProps {}
 
@@ -38,6 +40,12 @@ const NavProfile: FunctionComponent<NavProfileProps> = () => {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
+        <Link to={"/home/profile"}>
+          <DropdownMenuItem>
+            <UserRound />
+            Profile Settings
+          </DropdownMenuItem>
+        </Link>
         <DropdownMenuItem className="p-0" variant="destructive">
           <LogoutButton />
         </DropdownMenuItem>

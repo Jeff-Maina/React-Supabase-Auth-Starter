@@ -21,14 +21,17 @@ export const useAuthActions = () => {
     email: string,
     password: string
   ) => {
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
     });
 
     if (error) {
+      console.error(error);
       throw new Error(error.message); // Throw error to be caught in UI
     }
+
+    return data;
   };
 
   return {
