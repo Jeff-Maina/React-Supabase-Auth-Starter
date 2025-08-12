@@ -97,7 +97,7 @@ npm run build
 
 - [ ] Add OAuth providers (Google, GitHub, etc.)
 - [ ] Dark mode toggle
-- [x] Profile setup
+- [x] Multi-step signup with profile setup
 
 ## License
 

@@ -80,6 +80,7 @@ const Login: FunctionComponent<LoginProps> = () => {
         <Button
           variant="outline"
           className="w-full"
+          disabled
           onClick={() => navigate("/register")}
         >
           <GoogleIcon className="!size-5" />
@@ -116,10 +117,7 @@ const Login: FunctionComponent<LoginProps> = () => {
                 <FormItem>
                   <FormLabel className="flex items-center w-full justify-between">
                     <span>Password</span>
-                    <Link
-                      to="/forgot-password"
-                      className="text-xs link"
-                    >
+                    <Link to="/forgot-password" className="text-xs link">
                       Forgot password
                     </Link>
                   </FormLabel>
@@ -160,7 +158,12 @@ const Login: FunctionComponent<LoginProps> = () => {
               Sign In
             </SubmitButton>
 
-            <small>Don't have an account? <Link to={'/register'} className="link">Regiter</Link></small>
+            <small>
+              Don't have an account?{" "}
+              <Link to={"/register"} className="link">
+                Register
+              </Link>
+            </small>
           </form>
         </Form>
       </div>

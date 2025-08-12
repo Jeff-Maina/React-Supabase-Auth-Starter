@@ -18,6 +18,8 @@ import {
 import { Input } from "@/components/ui/input";
 import SubmitButton from "@/components/ui/submit-button";
 import { Link, useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { GoogleIcon } from "@/components/shared/icons";
 
 const signupSchema = z
   .object({
@@ -57,7 +59,6 @@ const Signup: FunctionComponent = () => {
         values.password
       );
 
-
       if (!data.session) {
         toast.success(
           `Account created! Please check your email (${values.email}) for a confirmation link.`
@@ -86,8 +87,19 @@ const Signup: FunctionComponent = () => {
 
   return (
     <main className="min-h-screen flex items-center justify-center p-4">
-      <div className="w-full max-w-sm p-6 rounded-lg border shadow bg-[var(--card-bg)]">
+      <div className="w-full max-w-sm p-6 rounded-lg border space-y-6 shadow bg-[var(--card-bg)]">
         <h1 className="text-xl font-semibold mb-6">Create an Account</h1>
+        <Button
+          variant="outline"
+          className="w-full"
+          disabled
+          onClick={() => navigate("/register")}
+        >
+          <GoogleIcon className="!size-5" />
+          Continue with Google
+        </Button>
+
+        <hr className="opacity-70" />
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -189,7 +201,7 @@ const Signup: FunctionComponent = () => {
 
             <small>
               Already have an account?{" "}
-              <Link to="login" className="link">
+              <Link to="/login" className="link">
                 Sign in
               </Link>
             </small>

@@ -8,6 +8,7 @@ type Profile = {
     lastname: string;
     email: string;
     role: string;
+    is_complete: boolean;
     user_id: string;
 };
 
